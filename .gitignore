@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+*.egg-info/
+.pytest_cache/
+
+# Data / models
+ml-pipeline/data/raw/*
+ml-pipeline/data/processed/*
+ml-pipeline/data/fingerprints/*
+!ml-pipeline/data/**/.gitkeep
+ml-pipeline/src/models/model_registry/*.pkl
+ml-pipeline/src/models/model_registry/*.joblib
+backend/ml_artifacts/*.pkl
+!backend/ml_artifacts/.gitkeep
+
+# Env
+.env
+*.env.local
+
+# Node
+node_modules/
+frontend/build/
+
+# Editor
+.vscode/
+.idea/
+.DS_Store
+
+# Logs
+*.log

@@ -1,0 +1,7 @@
+{
+  "model": "random_forest",
+  "accuracy": 0.9841,
+  "f1_weighted": 0.984,
+  "precision_weighted": 0.9843,
+  "recall_weighted": 0.9841
+}

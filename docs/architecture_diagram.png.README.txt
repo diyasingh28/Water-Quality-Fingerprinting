@@ -1,0 +1,5 @@
+Placeholder — generate an architecture diagram (e.g. via draw.io, Excalidraw,
+or the Visualizer) showing: Data Sources -> Preprocessing -> Fingerprint
+Features -> RF/XGBoost -> SHAP -> FastAPI -> React Dashboard, with the
+Phase 2 IoT path (ESP32 -> MQTT/HTTP -> same pipeline) shown as a parallel
+future path. Save the final image as architecture_diagram.png in this folder.

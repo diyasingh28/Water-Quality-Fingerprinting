@@ -71,7 +71,7 @@
 #         message="Upload processed successfully.",
 #     )
 
-import pandas as pd
+import pandas as pds
 import io
 import logging
 from fastapi import APIRouter, Depends, UploadFile, File, HTTPException

@@ -611,6 +611,29 @@ body {
   background: #f3f4f6;
 }
 
+.reset-all-section {
+  display: flex;
+  justify-content: flex-end;
+  margin: 8px 0 20px;
+}
+
+.reset-all-trigger {
+  border: 1px solid var(--color-border);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 14px;
+}
+
+.reset-all-confirm {
+  background: var(--color-surface);
+  border: 1px solid var(--color-danger-light);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  box-shadow: var(--shadow-card);
+  max-width: 420px;
+  margin-left: auto;
+}
+
 /* ============ Station map ============ */
 .station-map-placeholder {
   background: var(--color-surface);

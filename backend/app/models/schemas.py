@@ -60,15 +60,24 @@ class ExplanationResponse(BaseModel):
     top_features: list[ShapFeatureContribution]
 
 
+# class StationSummary(BaseModel):
+#     station_id: str
+#     latest_year: Optional[int] = None
+#     latest_prediction: Optional[str] = None
+#     total_readings: int
 class StationSummary(BaseModel):
     station_id: str
+    station_name: Optional[str] = None
     latest_year: Optional[int] = None
     latest_prediction: Optional[str] = None
     total_readings: int
+    latitude: Optional[float] = None
+    longitude: Optional[float] = None
 
 
 class HistoryRecord(BaseModel):
     station_id: str
+    station_name: Optional[str] = None
     year: int
     predicted_source: str
     confidence: float

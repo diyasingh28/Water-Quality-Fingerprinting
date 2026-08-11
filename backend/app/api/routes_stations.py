@@ -27,6 +27,11 @@ router = APIRouter(tags=["stations"])
 def list_stations(db: Session = Depends(get_db)):
     return crud.get_all_stations_summary(db)
 
+@router.delete("/stations")
+def delete_all_stations(db: Session = Depends(get_db)):
+    """Deletes all stations/lakes and their readings — full dashboard reset."""
+    deleted_count = crud.delete_all_stations(db)
+    return {"rows_deleted": deleted_count, "message": "All stations deleted"}
 
 @router.delete("/stations/{station_id}")
 def delete_station(station_id: str, db: Session = Depends(get_db)):

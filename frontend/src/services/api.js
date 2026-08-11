@@ -57,6 +57,9 @@ export const explainSample = (sample) =>
 export const deleteStation = (stationId) =>
   api.delete(`/stations/${encodeURIComponent(stationId)}`).then((res) => res.data);
 
+export const deleteAllStations = () =>
+  api.delete("/stations").then((res) => res.data);
+
 export const uploadCsv = (file) => {
   const formData = new FormData();
   formData.append("file", file);

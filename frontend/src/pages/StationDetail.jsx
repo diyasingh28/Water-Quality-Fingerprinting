@@ -47,7 +47,7 @@ export default function StationDetail() {
   return (
     <div className="station-detail-page">
       <Link to="/" className="back-link">&larr; Back to Dashboard</Link>
-      <h2>Station: {stationId}</h2>
+      <h2>{latest?.station_name || `Station: ${stationId}`}</h2>
 
       {loading && <p>Loading history...</p>}
       {error && <p className="status-error">Error: {error}</p>}

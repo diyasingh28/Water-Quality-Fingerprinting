@@ -79,6 +79,28 @@ def get_readings_by_station(db: Session, station_id: str, limit: int = 100):
     )
 
 
+# def get_all_stations_summary(db: Session):
+#     stations = db.query(WaterReading.station_id).distinct().all()
+#     summaries = []
+#     for (station_id,) in stations:
+#         latest = (
+#             db.query(WaterReading)
+#             .filter(WaterReading.station_id == station_id)
+#             .order_by(WaterReading.year.desc())
+#             .first()
+#         )
+#         count = (
+#             db.query(func.count(WaterReading.id))
+#             .filter(WaterReading.station_id == station_id)
+#             .scalar()
+#         )
+#         summaries.append({
+#             "station_id": station_id,
+#             "latest_year": latest.year if latest else None,
+#             "latest_prediction": latest.predicted_source if latest else None,
+#             "total_readings": count,
+#         })
+#     return summaries
 def get_all_stations_summary(db: Session):
     stations = db.query(WaterReading.station_id).distinct().all()
     summaries = []
@@ -96,9 +118,12 @@ def get_all_stations_summary(db: Session):
         )
         summaries.append({
             "station_id": station_id,
+            "station_name": latest.station_name if latest else None,
             "latest_year": latest.year if latest else None,
             "latest_prediction": latest.predicted_source if latest else None,
             "total_readings": count,
+            "latitude": latest.latitude if latest else None,
+            "longitude": latest.longitude if latest else None,
         })
     return summaries
 
@@ -119,5 +144,12 @@ def delete_station(db: Session, station_id: str) -> int:
         .filter(WaterReading.station_id == station_id)
         .delete(synchronize_session=False)
     )
+    db.commit()
+    return deleted_count
+
+def delete_all_stations(db: Session) -> int:
+    """Deletes every reading for every station (full reset of the dashboard).
+    Returns the number of rows deleted."""
+    deleted_count = db.query(WaterReading).delete(synchronize_session=False)
     db.commit()
     return deleted_count

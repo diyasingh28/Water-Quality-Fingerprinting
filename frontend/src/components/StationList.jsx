@@ -75,7 +75,7 @@ export default function StationList({ stations, onDeleted }) {
           className={`station-card ${pendingId === s.station_id ? "station-card-confirming" : ""}`}
         >
           <div className="station-card-top">
-            <h3>{s.station_id}</h3>
+            <h3>{s.station_name || s.station_id}</h3>
             <button
               type="button"
               className="delete-icon-btn"

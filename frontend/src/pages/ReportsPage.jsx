@@ -7,12 +7,12 @@ export default function ReportsPage() {
   return (
     <div className="reports-page">
       <h2>Reports</h2>
-      <p className="page-note">
+      {/* <p className="page-note">
         Backend report endpoints (PDF/CSV export) are implemented in
         <code> app/services/report_service.py</code> — wire up a
         `/reports/{"{"}station_id{"}"}` route in the backend if you want
         direct download links here.
-      </p>
+      </p> */}
       {loading ? (
         <p>Loading stations...</p>
       ) : (

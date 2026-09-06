@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.api import routes_reports
+
 
 from app.core.config import settings
 from app.db.database import init_db
@@ -43,3 +45,4 @@ app.include_router(routes_stations.router)
 app.include_router(routes_history.router)
 app.include_router(routes_upload.router)
 app.include_router(routes_stream.router)  # Phase 2 stub
+app.include_router(routes_reports.router)

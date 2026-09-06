@@ -53,18 +53,29 @@ class ShapFeatureContribution(BaseModel):
     description: str
 
 
+class WaterfallData(BaseModel):
+    base_value: float
+    final_value: float
+    predicted_class: str
+    contributions: list[ShapFeatureContribution]
+
+
 class ExplanationResponse(BaseModel):
     station_id: str
     predicted_source: str
     narrative: str
     top_features: list[ShapFeatureContribution]
+    waterfall: WaterfallData
+    sample_values: dict[str, float]
+    category_ranges: dict | None = None
 
-
-# class StationSummary(BaseModel):
+# class ExplanationResponse(BaseModel):
 #     station_id: str
-#     latest_year: Optional[int] = None
-#     latest_prediction: Optional[str] = None
-#     total_readings: int
+#     predicted_source: str
+#     narrative: str
+#     top_features: list[ShapFeatureContribution]
+
+
 class StationSummary(BaseModel):
     station_id: str
     station_name: Optional[str] = None

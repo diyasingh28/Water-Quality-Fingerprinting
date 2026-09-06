@@ -1,0 +1,274 @@
+{
+  "unclassified": {
+    "ph": {
+      "typical_low": 7.25,
+      "typical_high": 7.85,
+      "observed_min": 6.35,
+      "observed_max": 8.75
+    },
+    "dissolved_oxygen": {
+      "typical_low": 5.0,
+      "typical_high": 7.05,
+      "observed_min": 0.3,
+      "observed_max": 10.88
+    },
+    "bod": {
+      "typical_low": 3.1,
+      "typical_high": 8.5,
+      "observed_min": 0.1,
+      "observed_max": 21.62
+    },
+    "conductivity": {
+      "typical_low": 230.88,
+      "typical_high": 812.88,
+      "observed_min": 23.0,
+      "observed_max": 2348.12
+    },
+    "nitrate": {
+      "typical_low": 0.7,
+      "typical_high": 2.6,
+      "observed_min": 0.0,
+      "observed_max": 8.68
+    },
+    "fecal_coliform": {
+      "typical_low": 245.0,
+      "typical_high": 6185.25,
+      "observed_min": 2.0,
+      "observed_max": 6185.25
+    },
+    "total_coliform": {
+      "typical_low": 877.5,
+      "typical_high": 19740.0,
+      "observed_min": 2.0,
+      "observed_max": 19740.0
+    },
+    "temperature": {
+      "typical_low": 23.5,
+      "typical_high": 27.5,
+      "observed_min": 18.75,
+      "observed_max": 32.75
+    }
+  },
+  "natural_background": {
+    "ph": {
+      "typical_low": 7.3,
+      "typical_high": 7.9,
+      "observed_min": 6.35,
+      "observed_max": 8.75
+    },
+    "dissolved_oxygen": {
+      "typical_low": 5.85,
+      "typical_high": 7.25,
+      "observed_min": 4.05,
+      "observed_max": 10.88
+    },
+    "bod": {
+      "typical_low": 1.4,
+      "typical_high": 2.35,
+      "observed_min": 0.2,
+      "observed_max": 3.0
+    },
+    "conductivity": {
+      "typical_low": 166.5,
+      "typical_high": 533.0,
+      "observed_min": 18.5,
+      "observed_max": 2348.12
+    },
+    "nitrate": {
+      "typical_low": 0.3,
+      "typical_high": 1.52,
+      "observed_min": 0.0,
+      "observed_max": 2.91
+    },
+    "fecal_coliform": {
+      "typical_low": 13.5,
+      "typical_high": 245.0,
+      "observed_min": 1.0,
+      "observed_max": 500.0
+    },
+    "total_coliform": {
+      "typical_low": 85.0,
+      "typical_high": 877.5,
+      "observed_min": 2.0,
+      "observed_max": 11020.0
+    },
+    "temperature": {
+      "typical_low": 22.0,
+      "typical_high": 26.5,
+      "observed_min": 18.75,
+      "observed_max": 32.75
+    }
+  },
+  "sewage_domestic": {
+    "ph": {
+      "typical_low": 7.05,
+      "typical_high": 7.55,
+      "observed_min": 6.35,
+      "observed_max": 8.75
+    },
+    "dissolved_oxygen": {
+      "typical_low": 2.75,
+      "typical_high": 3.6,
+      "observed_min": 0.45,
+      "observed_max": 4.0
+    },
+    "bod": {
+      "typical_low": 16.11,
+      "typical_high": 21.62,
+      "observed_min": 6.0,
+      "observed_max": 21.62
+    },
+    "conductivity": {
+      "typical_low": 933.75,
+      "typical_high": 1414.62,
+      "observed_min": 5.0,
+      "observed_max": 2348.12
+    },
+    "nitrate": {
+      "typical_low": 2.61,
+      "typical_high": 7.52,
+      "observed_min": 0.0,
+      "observed_max": 8.68
+    },
+    "fecal_coliform": {
+      "typical_low": 6185.25,
+      "typical_high": 6185.25,
+      "observed_min": 507.0,
+      "observed_max": 6185.25
+    },
+    "total_coliform": {
+      "typical_low": 19740.0,
+      "typical_high": 19740.0,
+      "observed_min": 940.0,
+      "observed_max": 19740.0
+    },
+    "temperature": {
+      "typical_low": 25.0,
+      "typical_high": 27.5,
+      "observed_min": 18.75,
+      "observed_max": 32.75
+    }
+  },
+  "industrial": {
+    "ph": {
+      "typical_low": 7.35,
+      "typical_high": 7.75,
+      "observed_min": 6.35,
+      "observed_max": 8.75
+    },
+    "dissolved_oxygen": {
+      "typical_low": 1.25,
+      "typical_high": 5.26,
+      "observed_min": 0.27,
+      "observed_max": 10.88
+    },
+    "bod": {
+      "typical_low": 7.0,
+      "typical_high": 20.0,
+      "observed_min": 3.0,
+      "observed_max": 21.62
+    },
+    "conductivity": {
+      "typical_low": 1212.5,
+      "typical_high": 1877.12,
+      "observed_min": 1003.0,
+      "observed_max": 2348.12
+    },
+    "nitrate": {
+      "typical_low": 3.01,
+      "typical_high": 8.68,
+      "observed_min": 0.0,
+      "observed_max": 8.68
+    },
+    "fecal_coliform": {
+      "typical_low": 19.0,
+      "typical_high": 62.25,
+      "observed_min": 2.0,
+      "observed_max": 500.0
+    },
+    "total_coliform": {
+      "typical_low": 246.5,
+      "typical_high": 556.25,
+      "observed_min": 2.0,
+      "observed_max": 18002.5
+    },
+    "temperature": {
+      "typical_low": 25.0,
+      "typical_high": 28.0,
+      "observed_min": 18.75,
+      "observed_max": 32.75
+    }
+  },
+  "agricultural_runoff": {
+    "ph": {
+      "typical_low": 7.15,
+      "typical_high": 7.85,
+      "observed_min": 6.35,
+      "observed_max": 8.75
+    },
+    "dissolved_oxygen": {
+      "typical_low": 5.3,
+      "typical_high": 6.49,
+      "observed_min": 1.35,
+      "observed_max": 10.88
+    },
+    "bod": {
+      "typical_low": 2.71,
+      "typical_high": 4.6,
+      "observed_min": 1.25,
+      "observed_max": 6.0
+    },
+    "conductivity": {
+      "typical_low": 487.12,
+      "typical_high": 863.88,
+      "observed_min": 31.0,
+      "observed_max": 2348.12
+    },
+    "nitrate": {
+      "typical_low": 5.9,
+      "typical_high": 8.68,
+      "observed_min": 5.0,
+      "observed_max": 8.68
+    },
+    "fecal_coliform": {
+      "typical_low": 10.12,
+      "typical_high": 1111.25,
+      "observed_min": 2.0,
+      "observed_max": 6185.25
+    },
+    "total_coliform": {
+      "typical_low": 120.75,
+      "typical_high": 2358.75,
+      "observed_min": 2.0,
+      "observed_max": 19740.0
+    },
+    "temperature": {
+      "typical_low": 24.12,
+      "typical_high": 26.5,
+      "observed_min": 19.5,
+      "observed_max": 32.5
+    }
+  },
+  "_rule_thresholds": {
+    "sewage_domestic": {
+      "bod_min": 6,
+      "fecal_coliform_min": 500,
+      "dissolved_oxygen_max": 4
+    },
+    "industrial": {
+      "conductivity_min": 1000,
+      "fecal_coliform_max": 500,
+      "bod_min": 3
+    },
+    "agricultural_runoff": {
+      "nitrate_min": 5,
+      "bod_max": 6
+    },
+    "natural_background": {
+      "bod_max": 3,
+      "fecal_coliform_max": 500,
+      "nitrate_max": 3,
+      "dissolved_oxygen_min": 4
+    }
+  }
+}

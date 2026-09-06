@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import PredictionCard from "../components/PredictionCard";
-import ShapChart from "../components/ShapChart";
+//import ShapChart from "../components/ShapChart";
 import TrendChart from "../components/TrendChart";
 import { useStationHistory } from "../hooks/useStationData";
 import { explainSample } from "../services/api";
+import ShapWaterfall from "../components/ShapWaterfall";
+import CategoryRangeTable from "../components/CategoryRangeTable";
 
 export default function StationDetail() {
   const { stationId } = useParams();
@@ -61,8 +63,15 @@ export default function StationDetail() {
       {explainError && <p className="status-error">Error: {explainError}</p>}
 
       {explanation && (
-        <ShapChart topFeatures={explanation.top_features} narrative={explanation.narrative} />
-      )}
+  <>
+    <ShapWaterfall waterfall={explanation.waterfall} predictedSource={explanation.predicted_source} narrative={explanation.narrative} />
+    <CategoryRangeTable
+      categoryRanges={explanation.category_ranges}
+      sampleValues={explanation.sample_values}
+      predictedSource={explanation.predicted_source}
+    />
+  </>
+)}
 
       <TrendChart history={history} />
     </div>

@@ -7,6 +7,8 @@ import { useStationHistory } from "../hooks/useStationData";
 import { explainSample } from "../services/api";
 import ShapWaterfall from "../components/ShapWaterfall";
 import CategoryRangeTable from "../components/CategoryRangeTable";
+import TreatmentRecommendations from "../components/TreatmentRecommendations";
+import AnomalyBanner from "../components/AnomalyBanner";
 
 export default function StationDetail() {
   const { stationId } = useParams();
@@ -54,7 +56,10 @@ export default function StationDetail() {
       {loading && <p>Loading history...</p>}
       {error && <p className="status-error">Error: {error}</p>}
 
+      <AnomalyBanner reading={latest} />
+
       {latest && <PredictionCard prediction={latest} />}
+
 
       <button onClick={handleExplainLatest} disabled={explaining || !latest}>
         {explaining ? "Explaining..." : "Explain Latest Prediction"}
@@ -70,6 +75,7 @@ export default function StationDetail() {
       sampleValues={explanation.sample_values}
       predictedSource={explanation.predicted_source}
     />
+    <TreatmentRecommendations recommendations={explanation.recommendations} />
   </>
 )}
 

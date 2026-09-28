@@ -60,6 +60,12 @@ class WaterfallData(BaseModel):
     contributions: list[ShapFeatureContribution]
 
 
+class TreatmentRecommendations(BaseModel):
+    predicted_class: str
+    general_recommendations: list[str]
+    targeted_recommendations: list[str]
+    station_name: str | None = None
+
 class ExplanationResponse(BaseModel):
     station_id: str
     predicted_source: str
@@ -68,6 +74,7 @@ class ExplanationResponse(BaseModel):
     waterfall: WaterfallData
     sample_values: dict[str, float]
     category_ranges: dict | None = None
+    recommendations: TreatmentRecommendations
 
 # class ExplanationResponse(BaseModel):
 #     station_id: str
@@ -92,6 +99,8 @@ class HistoryRecord(BaseModel):
     year: int
     predicted_source: str
     confidence: float
+    is_anomaly: bool = False
+    anomaly_details: list[dict] = []
 
     ph_min: Optional[float] = None
     ph_max: Optional[float] = None

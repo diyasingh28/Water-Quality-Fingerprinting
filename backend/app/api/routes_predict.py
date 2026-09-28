@@ -7,6 +7,9 @@ from app.core.parameters import AVAILABLE_PARAMETERS
 from app.db.database import get_db
 from app.db import crud
 
+import json
+from app.services.anomaly_service import compute_anomaly
+
 router = APIRouter(tags=["prediction"])
 
 
@@ -38,16 +41,39 @@ def predict(
         _reading_to_dict(r) for r in prior_readings if r.year != sample.year
     ]
 
+    # try:
+    #     predicted_class, confidence, _ = inference.predict(sample.model_dump(), history_rows)
+    # except Exception as e:
+    #     raise HTTPException(status_code=500, detail=str(e))
+
+    # crud.create_reading(db, {
+    #     **sample.model_dump(),
+    #     "predicted_source": predicted_class,
+    #     "confidence": confidence,
+    #     "source_type": "dataset",
+    # })
+
+    # return PredictionResponse(
+    #     station_id=sample.station_id,
+    #     year=sample.year,
+    #     predicted_source=predicted_class,
+    #     confidence=confidence,
+    # )
+
     try:
-        predicted_class, confidence, _ = inference.predict(sample.model_dump(), history_rows)
+        predicted_class, confidence, X_row = inference.predict(sample.model_dump(), history_rows)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+    anomaly = compute_anomaly(sample.model_dump(), history_rows)
 
     crud.create_reading(db, {
         **sample.model_dump(),
         "predicted_source": predicted_class,
         "confidence": confidence,
         "source_type": "dataset",
+        "is_anomaly": anomaly["is_anomaly"],
+        "anomaly_details": json.dumps(anomaly["anomalies"]),
     })
 
     return PredictionResponse(

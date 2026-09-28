@@ -52,6 +52,7 @@ from app.services.explanation_service import get_explanation_service, Explanatio
 from app.api.routes_predict import _reading_to_dict
 from app.db.database import get_db
 from app.db import crud
+from app.services.treatment_service import get_recommendations
 
 router = APIRouter(tags=["explanation"])
 
@@ -81,6 +82,12 @@ def explain(
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+    recommendations = get_recommendations(predicted_class,
+    top_features,
+    sample_values=sample_values,
+    category_ranges=category_ranges,
+    station_name=getattr(sample, "station_name", None) or sample.station_id,)
+
     return ExplanationResponse(
     station_id=sample.station_id,
     predicted_source=predicted_class,
@@ -89,4 +96,5 @@ def explain(
     waterfall=waterfall,
     sample_values=sample_values,
     category_ranges=category_ranges,
+    recommendations=recommendations,
 )

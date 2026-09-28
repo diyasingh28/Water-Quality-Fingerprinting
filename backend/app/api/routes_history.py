@@ -6,16 +6,26 @@ from app.models.schemas import HistoryRecord
 from app.core.parameters import AVAILABLE_PARAMETERS
 from app.db.database import get_db
 from app.db import crud
+import json
+
 
 router = APIRouter(tags=["history"])
 
 
 def _reading_to_history_record(r) -> HistoryRecord:
+    raw_details = getattr(r, "anomaly_details", None)
+    try:
+        anomaly_details = json.loads(raw_details) if raw_details else []
+    except (json.JSONDecodeError, TypeError):
+        anomaly_details = []
+
     data = {
         "station_id": r.station_id,
         "year": r.year,
         "predicted_source": r.predicted_source or "unclassified",
         "confidence": r.confidence or 0.0,
+        "is_anomaly": bool(getattr(r, "is_anomaly", False)),
+        "anomaly_details": anomaly_details,
     }
     for p in AVAILABLE_PARAMETERS:
         data[f"{p}_min"] = getattr(r, f"{p}_min", None)

@@ -30,9 +30,10 @@
 #     setattr(WaterReading, f"{_param}_max", Column(Float, nullable=True))
 
 
-from sqlalchemy import Column, Integer, String, Float
+from sqlalchemy import Column, DateTime, Integer, String, Float, Text, Boolean
 from app.db.database import Base
 from app.core.parameters import AVAILABLE_PARAMETERS
+from datetime import datetime
 
 
 class WaterReading(Base):
@@ -59,6 +60,9 @@ class WaterReading(Base):
     latitude = Column(Float, nullable=True)
     longitude = Column(Float, nullable=True)
 
+    is_anomaly = Column(Boolean, default=False)
+    anomaly_details = Column(Text, nullable=True)  # JSON string
+
 
 # Dynamically attach {param}_min / {param}_max columns for each of the 8
 # real available parameters, so this stays in sync with
@@ -66,3 +70,12 @@ class WaterReading(Base):
 for _param in AVAILABLE_PARAMETERS:
     setattr(WaterReading, f"{_param}_min", Column(Float, nullable=True))
     setattr(WaterReading, f"{_param}_max", Column(Float, nullable=True))
+
+
+class StationStatus(Base):
+    __tablename__ = "station_status"
+
+    station_id = Column(String, primary_key=True, index=True)
+    status = Column(String, default="unaddressed", nullable=False)  # unaddressed | planned | completed
+    note = Column(String, nullable=True)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)

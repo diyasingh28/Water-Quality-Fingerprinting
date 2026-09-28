@@ -57,7 +57,7 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import func
 
-from app.models.db_models import WaterReading
+from app.models.db_models import WaterReading, StationStatus
 
 
 def create_reading(db: Session, reading_data: dict) -> WaterReading:
@@ -153,3 +153,58 @@ def delete_all_stations(db: Session) -> int:
     deleted_count = db.query(WaterReading).delete(synchronize_session=False)
     db.commit()
     return deleted_count
+
+def get_latest_readings(db):
+    """One row per station -- its most recent year's reading."""
+    subq = (
+        db.query(
+            WaterReading.station_id,
+            func.max(WaterReading.year).label("max_year"),
+        )
+        .group_by(WaterReading.station_id)
+        .subquery()
+    )
+    return (
+        db.query(WaterReading)
+        .join(
+            subq,
+            (WaterReading.station_id == subq.c.station_id)
+            & (WaterReading.year == subq.c.max_year),
+        )
+        .all()
+    )
+
+
+def get_station_status(db, station_id: str):
+    return db.query(StationStatus).filter(
+        StationStatus.station_id == station_id
+    ).first()
+
+
+def upsert_station_status(db, station_id: str, status: str, note: str | None = None):
+    obj = get_station_status(db, station_id)
+    if obj:
+        obj.status = status
+        if note is not None:
+            obj.note = note
+    else:
+        obj = StationStatus(station_id=station_id, status=status, note=note)
+        db.add(obj)
+    db.commit()
+    db.refresh(obj)
+    return obj
+
+def get_reading_by_station_and_year(db: Session, station_id: str, year: int):
+    return (
+        db.query(WaterReading)
+        .filter(WaterReading.station_id == station_id, WaterReading.year == year)
+        .first()
+    )
+
+
+def update_reading(db: Session, reading: WaterReading, reading_data: dict) -> WaterReading:
+    for key, value in reading_data.items():
+        setattr(reading, key, value)
+    db.commit()
+    db.refresh(reading)
+    return reading
